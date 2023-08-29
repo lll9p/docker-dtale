@@ -12,7 +12,7 @@ RUN set -eux;\
     apk del tzdata;\
     pip install --upgrade pip;\
     pip install --upgrade setuptools;\
-    pip install --upgrade dtale==$VERSION;\
+    pip install --prefer-binary --upgrade dtale==$VERSION;\
     rm -rf /root/.cache;\
     mkdir /root/.config
 COPY ./dtale.ini /root/.config/dtale.ini
