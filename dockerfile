@@ -1,4 +1,4 @@
-FROM python:alpine
+FROM python:slim
 
 LABEL maintainer="lll9p <lll9p.china@gmail.com>"
 
@@ -6,10 +6,9 @@ ENV VERSION 3.3.0
 ENV TZ Asia/Shanghai
 
 RUN set -eux;\
-    apk add --no-cache tzdata;\
-    cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime;\
+    apt-get update && DEBIAN_FRONTEND="noninteractive" TZ="$TZ" apt-get install -y tzdata;\
+    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime;\
     echo $TZ > /etc/timezone;\
-    apk del tzdata;\
     pip install --upgrade pip;\
     pip install --upgrade setuptools;\
     pip install --prefer-binary --upgrade dtale==$VERSION;\
