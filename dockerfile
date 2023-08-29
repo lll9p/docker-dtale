@@ -15,4 +15,4 @@ RUN set -eux;\
 WORKDIR /app
 
 EXPOSE 8080
-CMD ["dtale", "--port", "8080", "--app-root", "/app"]
+CMD ["dtale", "--port", "8080"]
